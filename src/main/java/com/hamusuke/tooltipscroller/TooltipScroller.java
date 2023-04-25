@@ -1,9 +1,8 @@
 package com.hamusuke.tooltipscroller;
 
 import net.minecraft.client.KeyMapping;
-import net.minecraftforge.client.ClientRegistry;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.lwjgl.glfw.GLFW;
 
@@ -21,9 +20,9 @@ public class TooltipScroller {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onClientSetup);
     }
 
-    private void onClientSetup(final FMLClientSetupEvent e) {
-        ClientRegistry.registerKeyBinding(UP);
-        ClientRegistry.registerKeyBinding(DOWN);
-        ClientRegistry.registerKeyBinding(RESET);
+    private void onClientSetup(final RegisterKeyMappingsEvent event) {
+        event.register(UP);
+        event.register(DOWN);
+        event.register(RESET);
     }
 }
